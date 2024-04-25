@@ -1,6 +1,5 @@
 package homework.lesson_2;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
@@ -35,7 +34,7 @@ public class Test_2 {
     // 2023-05-19 07:53 [1, 3, 4, 8, 9]
 
     class BubbleSort {
-        private static File log;
+        // private static File log;
         private static FileWriter fileWriter;
 
         static String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm ").format(Calendar.getInstance().getTime());
@@ -83,7 +82,6 @@ public class Test_2 {
                         .toArray();
             }
 
-            BubbleSort ans = new Test_2().new BubbleSort();
             BubbleSort.sort(arr);
 
             try (BufferedReader br = new BufferedReader(new FileReader("log.txt"))) {
