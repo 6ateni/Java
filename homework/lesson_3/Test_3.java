@@ -1,6 +1,9 @@
 package homework.lesson_3;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.IntStream;
 import java.util.ArrayList;
 
 public class Test_3 {
@@ -9,7 +12,8 @@ public class Test_3 {
 // Реализуйте метод, который принимает на вход целочисленный массив arr:
 // - Создаёт список ArrayList, заполненный числами из исходого массива arr.
 // - Сортирует список по возрастанию и выводит на экран.
-// - Находит минимальное значение в списке и выводит на экран - Minimum is {число} - Находит максимальное значение в списке и выводит на экран - Maximum is {число}
+// - Находит минимальное значение в списке и выводит на экран - Minimum is {число} 
+// - Находит максимальное значение в списке и выводит на экран - Maximum is {число}
 // - Находит среднее арифметическое значений списка и выводит на экран - Average is =  {число}
 // Напишите свой код в методе analyzeNumbers класса Answer. Метод analyzeNumbers принимает на вход один параметр:
 
@@ -27,9 +31,23 @@ public class Test_3 {
 class Answer {
     public static void analyzeNumbers(Integer[] arr) {
       // Введите свое решение ниже
-
-       
+      List <Integer> array = new ArrayList<Integer>(Arrays.asList(arr));
+      Collections.sort(array);
+      System.out.println(array);
+      System.out.println("Minimum is " + Collections.min(array));
+      System.out.println("Maximum is " + Collections.max(array));
+      if (array.size() > 0){
+        double sum = 0;
+        for (int j = 0; j < array.size(); j++) {
+          sum += array.get(j);
+        }
+      
+      double average = sum / array.size();
+      System.out.println("Average is = " + average);
     }
+      
+    }
+
 }
 
 // Не удаляйте этот класс - он нужен для вывода результатов на экран и проверки
@@ -47,7 +65,7 @@ public class Printer{
                         .toArray(Integer[]::new);
       }     
       
-      Answer ans = new Answer();      
+      Answer ans = new Test_3().new Answer();      
       ans.analyzeNumbers(arr);
     }
 }

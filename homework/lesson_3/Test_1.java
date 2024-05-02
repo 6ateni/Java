@@ -11,10 +11,60 @@ public class Test_1 {
 // a = {5, 1, 6, 2, 3, 4} -> [1, 2, 3, 4, 5, 6]
 
 class MergeSort {
-    public static int[] mergeSort(int[] a) {
+    public int[] mergeSort(int[] a) {
         // Напишите свое решение ниже
-    
+        int length = a.length;
+        if(length <= 1) return a;
 
+        int middle = length / 2;
+        int[]left = new int[middle];
+        int[]right = new int[length - middle];
+
+        int i = 0;
+        int j = 0;
+        for (; i < length; i++) {
+            if(i < middle){
+                left[i] = a[i];
+            }
+            else{
+                right[j] = a[i];
+                j++;
+            }
+        }
+
+        mergeSort(left);
+        mergeSort(right);
+        merge(a, left, right);
+        return a;
+
+    }
+    public static void merge(int[] a, int[]left, int[]right) {
+        int leftSize = a.length / 2;
+        int rightSize = a.length - leftSize;
+        int i = 0, l = 0, r = 0;
+
+        while (l < leftSize && r < rightSize) {
+            if (left[l] < right[r]) {
+                a[i] = left[l];
+                i++;
+                l++;
+            }
+            else{
+                a[i] = right[r];
+                i++;
+                r++;
+            }
+        }
+        while (l < leftSize) {
+            a[i] = left[l];
+            i++;
+            l++;
+        }
+        while (r < rightSize) {
+            a[i] = right[r];
+            i++;
+            r++;
+        }
     }
 }
 
